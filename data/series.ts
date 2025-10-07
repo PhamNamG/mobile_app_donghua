@@ -1,0 +1,190 @@
+import { Series, Episode, Category } from '@/types/movie';
+
+// Sample episodes cho Ne Zha series
+const nezhaEpisodes: Episode[] = [
+  {
+    id: 'nezha-1',
+    title: 'Birth of the Demon Child',
+    titleChinese: '魔童降世',
+    episodeNumber: 1,
+    duration: 45,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/vqHFYN2MhLCLk6YTzK5ACJmSvt3.jpg',
+    description: 'The story begins with the birth of Ne Zha, a child born with incredible powers but destined for destruction.',
+  },
+  {
+    id: 'nezha-2',
+    title: 'The Prophecy',
+    titleChinese: '预言',
+    episodeNumber: 2,
+    duration: 42,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/vqHFYN2MhLCLk6YTzK5ACJmSvt3.jpg',
+    description: 'Ne Zha discovers his true destiny and the prophecy that surrounds him.',
+  },
+  {
+    id: 'nezha-3',
+    title: 'The Training',
+    titleChinese: '修炼',
+    episodeNumber: 3,
+    duration: 48,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/vqHFYN2MhLCLk6YTzK5ACJmSvt3.jpg',
+    description: 'Ne Zha begins his training to control his powers and change his fate.',
+  },
+  {
+    id: 'nezha-4',
+    title: 'The Final Battle',
+    titleChinese: '最终之战',
+    episodeNumber: 4,
+    duration: 52,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/vqHFYN2MhLCLk6YTzK5ACJmSvt3.jpg',
+    description: 'The epic conclusion as Ne Zha faces his greatest challenge yet.',
+  },
+];
+
+// Sample episodes cho Monkey King series
+const monkeyKingEpisodes: Episode[] = [
+  {
+    id: 'mk-1',
+    title: 'The Imprisonment',
+    titleChinese: '被囚禁',
+    episodeNumber: 1,
+    duration: 38,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/3DvKGwNqAxAqvEaHuYFE0tlHqq2.jpg',
+    description: 'The Monkey King wakes from his 500-year imprisonment.',
+  },
+  {
+    id: 'mk-2',
+    title: 'The Child',
+    titleChinese: '孩子',
+    episodeNumber: 2,
+    duration: 41,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/3DvKGwNqAxAqvEaHuYFE0tlHqq2.jpg',
+    description: 'The Monkey King meets a child who needs his help.',
+  },
+];
+
+// Sample episodes cho White Snake series
+const whiteSnakeEpisodes: Episode[] = [
+  {
+    id: 'ws-1',
+    title: 'The Encounter',
+    titleChinese: '相遇',
+    episodeNumber: 1,
+    duration: 44,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/cXZJiHd0W7PZbq8TqPd7xGWWKcG.jpg',
+    description: 'A snake spirit meets a human in ancient China.',
+  },
+  {
+    id: 'ws-2',
+    title: 'The Love Story',
+    titleChinese: '爱情故事',
+    episodeNumber: 2,
+    duration: 47,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/cXZJiHd0W7PZbq8TqPd7xGWWKcG.jpg',
+    description: 'Their forbidden love story unfolds.',
+  },
+  {
+    id: 'ws-3',
+    title: 'The Separation',
+    titleChinese: '分离',
+    episodeNumber: 3,
+    duration: 43,
+    thumbnail: 'https://image.tmdb.org/t/p/w500/cXZJiHd0W7PZbq8TqPd7xGWWKcG.jpg',
+    description: 'Forces try to separate the lovers.',
+  },
+];
+
+export const series: Series[] = [
+  {
+    id: 'nezha-series',
+    title: 'Ne Zha Chronicles',
+    titleChinese: '哪吒传奇',
+    poster: 'https://image.tmdb.org/t/p/w500/vqHFYN2MhLCLk6YTzK5ACJmSvt3.jpg',
+    backdrop: 'https://image.tmdb.org/t/p/original/xqvX5A24a4VZDjq3rjPRcVRDL8p.jpg',
+    rating: 8.5,
+    year: 2019,
+    totalEpisodes: 4,
+    status: 'completed',
+    genre: ['Fantasy', 'Action', 'Adventure'],
+    description: 'An epic tale of the Demon Child Ne Zha, born with unique powers and destined to bring destruction. Follow his journey as he learns to control his powers and change his fate.',
+    director: 'Yang Yu',
+    studio: 'Coloroom Pictures',
+    isFeatured: true,
+    isHot: true,
+    episodes: nezhaEpisodes,
+  },
+  {
+    id: 'monkey-king-series',
+    title: 'Monkey King: Hero Returns',
+    titleChinese: '西游记之大圣归来',
+    poster: 'https://image.tmdb.org/t/p/w500/3DvKGwNqAxAqvEaHuYFE0tlHqq2.jpg',
+    backdrop: 'https://image.tmdb.org/t/p/original/8PJjXzb7A7UmILv4S5SLmXFQodK.jpg',
+    rating: 8.2,
+    year: 2015,
+    totalEpisodes: 2,
+    status: 'ongoing',
+    genre: ['Adventure', 'Fantasy', 'Action'],
+    description: 'The Monkey King returns from his 500-year imprisonment to save a child from evil demons. A modern retelling of the classic Chinese legend.',
+    director: 'Tian Xiao Peng',
+    studio: 'October Animation Studio',
+    isNew: true,
+    episodes: monkeyKingEpisodes,
+  },
+  {
+    id: 'white-snake-series',
+    title: 'White Snake Saga',
+    titleChinese: '白蛇传说',
+    poster: 'https://image.tmdb.org/t/p/w500/cXZJiHd0W7PZbq8TqPd7xGWWKcG.jpg',
+    backdrop: 'https://image.tmdb.org/t/p/original/2lJhJ6V3m5nUJdTrQrLNSFI9Q6r.jpg',
+    rating: 7.9,
+    year: 2019,
+    totalEpisodes: 3,
+    status: 'completed',
+    genre: ['Romance', 'Fantasy', 'Animation'],
+    description: 'A timeless love story between a snake spirit and a human, set in ancient China. Experience their forbidden romance and the challenges they face.',
+    director: 'Amp Wong, Zhao Ji',
+    studio: 'Light Chaser Animation',
+    episodes: whiteSnakeEpisodes,
+  },
+];
+
+export const categories: Category[] = [
+  {
+    id: 'fantasy-adventure',
+    title: 'Fantasy & Adventure',
+    description: 'Magical worlds and epic journeys',
+    poster: 'https://image.tmdb.org/t/p/w500/vqHFYN2MhLCLk6YTzK5ACJmSvt3.jpg',
+    series: series.filter(s => s.genre.includes('Fantasy')),
+  },
+  {
+    id: 'romance',
+    title: 'Romance & Love',
+    description: 'Heartwarming love stories',
+    poster: 'https://image.tmdb.org/t/p/w500/cXZJiHd0W7PZbq8TqPd7xGWWKcG.jpg',
+    series: series.filter(s => s.genre.includes('Romance')),
+  },
+  {
+    id: 'action',
+    title: 'Action & Epic',
+    description: 'High-octane action and adventure',
+    poster: 'https://image.tmdb.org/t/p/w500/3DvKGwNqAxAqvEaHuYFE0tlHqq2.jpg',
+    series: series.filter(s => s.genre.includes('Action')),
+  },
+  {
+    id: 'featured',
+    title: 'Featured Series',
+    description: 'Hand-picked amazing series',
+    series: series.filter(s => s.isFeatured),
+  },
+  {
+    id: 'new-releases',
+    title: 'New Releases',
+    description: 'Latest episodes and series',
+    series: series.filter(s => s.isNew),
+  },
+  {
+    id: 'trending',
+    title: 'Trending Now',
+    description: 'What everyone is watching',
+    series: series.filter(s => s.isHot),
+  },
+];
