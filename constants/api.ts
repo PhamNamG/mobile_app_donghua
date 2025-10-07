@@ -1,5 +1,8 @@
-// API URLs
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8001/api';
+// API URLs - Import from main constants file
+import { API_BASE_URL } from './index';
+
+// Re-export for convenience
+export { API_BASE_URL };
 
 // API Endpoints
 export const API_ENDPOINTS = {

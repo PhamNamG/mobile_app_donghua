@@ -1,7 +1,10 @@
 /**
- * API Client Configuration
- * Base configuration for all API calls
+ * Fetch-based API Client for React Native
+ * Alternative to axios, uses native fetch API with secure token storage
  */
+
+import { TokenStorage } from '@/lib/storage';
+import { AUTH } from '@/constants';
 
 const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'https://api.example.com';
 
@@ -18,7 +21,7 @@ export interface ApiError {
 }
 
 /**
- * Generic fetch wrapper with error handling
+ * Generic fetch wrapper with error handling and authentication
  */
 export async function apiClient<T>(
   endpoint: string,
@@ -26,10 +29,14 @@ export async function apiClient<T>(
 ): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
   
+  // Get auth token
+  const token = await TokenStorage.get();
+  
   const config: RequestInit = {
     ...options,
     headers: {
       'Content-Type': 'application/json',
+      ...(token ? { Authorization: `${AUTH.AUTH_HEADER_PREFIX} ${token}` } : {}),
       ...options?.headers,
     },
   };
@@ -42,6 +49,11 @@ export async function apiClient<T>(
         message: `HTTP error! status: ${response.status}`,
         status: response.status,
       };
+      
+      // Handle unauthorized
+      if (response.status === 401) {
+        await TokenStorage.remove();
+      }
       
       try {
         const errorData = await response.json();
@@ -100,6 +112,21 @@ export async function put<T>(
   return apiClient<T>(endpoint, {
     ...options,
     method: 'PUT',
+    body: JSON.stringify(body),
+  });
+}
+
+/**
+ * PATCH request
+ */
+export async function patch<T>(
+  endpoint: string,
+  body?: unknown,
+  options?: RequestInit
+): Promise<T> {
+  return apiClient<T>(endpoint, {
+    ...options,
+    method: 'PATCH',
     body: JSON.stringify(body),
   });
 }

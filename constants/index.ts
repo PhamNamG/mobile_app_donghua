@@ -1,6 +1,5 @@
 // API URLs
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8001/api';
-
+export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.0.102:8001/api';
 // API Endpoints
 export const API_ENDPOINTS = {
   CATEGORY: '/category',

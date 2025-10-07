@@ -41,7 +41,9 @@ export interface Anime {
 }
 
 export interface AnimeResponse {
-    data: Anime[]
+    data: {
+        data: Anime[]
+    }
     currentPage: number;
     totalPages: number;
     totalCount: number;
