@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, View, StatusBar, Pressable, ActivityIndicator } from 'react-native';
+import { StyleSheet, ScrollView, View, StatusBar, Pressable, ActivityIndicator, Text } from 'react-native';
 import { router } from 'expo-router';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
@@ -10,6 +10,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors } from '@/constants/theme';
 import { useAnime } from '@/hooks/api';
 import { usePoster } from '@/hooks/api/use-poster';
+import React from 'react';
 
 export default function HomeScreen() {
   const { data: animeData, isLoading, isError } = useAnime();
@@ -27,16 +28,9 @@ export default function HomeScreen() {
       });
     }
   };
-
-  const handleCategoryPress = (categoryId: string, categoryTitle: string) => {
-    router.push({
-      pathname: '/category/[id]',
-      params: { id: categoryId, title: categoryTitle },
-    });
-  };
   return (
     <ThemedView style={styles.container}>
-      <StatusBar 
+      <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
       />
       {/* Header */}
@@ -49,26 +43,26 @@ export default function HomeScreen() {
             中国动画
           </ThemedText>
         </View>
-        
+
         <View style={styles.headerRight}>
           <Pressable style={styles.iconButton}>
-            <IconSymbol 
-              name="magnifyingglass" 
-              size={24} 
-              color={colorScheme === 'dark' ? Colors.dark.icon : Colors.light.icon} 
+            <IconSymbol
+              name="magnifyingglass"
+              size={24}
+              color={colorScheme === 'dark' ? Colors.dark.icon : Colors.light.icon}
             />
           </Pressable>
         </View>
       </View>
 
-      <ScrollView 
+      <ScrollView
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
       >
         {/* Featured Banner */}
         {posterData?.data && posterData?.data.data.length > 0 && (
-          <FeaturedBanner 
-            posters={posterData?.data.data } 
+          <FeaturedBanner
+            posters={posterData?.data.data}
             onPosterPress={handleFeaturedPress}
           />
         )}
@@ -92,7 +86,7 @@ export default function HomeScreen() {
           <AnimeSection
             title="🔥 Mới Cập Nhật"
             animes={animeData.data.data}
-            onSeeAllPress={() => router.push('/category/latest')}
+            onSeeAllPress={() => router.push('/(tabs)')}
           />
         )}
 

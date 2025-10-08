@@ -7,7 +7,8 @@ import { Poster } from '@/lib/api/services/posters';
 import Swiper from 'react-native-swiper';
 import { useRef, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-
+import React from 'react';
+  
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const BANNER_HEIGHT = SCREEN_WIDTH * 0.75;
 

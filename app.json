@@ -1,23 +1,39 @@
 {
   "expo": {
-    "name": "my-app",
-    "slug": "my-app",
+    "name": "Movie App",
+    "slug": "movie-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "movieapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nampg.movieapp",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to capture photos and videos.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photos to upload images."
+      }
     },
     "android": {
+      "package": "com.nampg.movieapp",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#000000",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ],
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
@@ -45,6 +61,19 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "apiUrl": "https://hh3d.id.vn/api",
+      "router": {},
+      "eas": {
+        "projectId": "6ebb690d-37fe-4531-836c-77736fa926a9"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/6ebb690d-37fe-4531-836c-77736fa926a9"
     }
   }
 }

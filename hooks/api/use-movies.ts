@@ -30,6 +30,13 @@ export function useAnimePopular(width: string, height: string) {
 	});
 }
 
+export function useAnimeEpisodeById(id: string) {
+	return useQuery<Anime>({
+		queryKey: ['animeEpisodeById', id],
+		queryFn: () => animeApi.getEpisodeById(id),
+	});
+}
+
 export function useAnimeById(id: string) {
 	return useQuery<Anime>({
 		queryKey: ['anime', id],

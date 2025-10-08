@@ -68,6 +68,10 @@ export const animeApi = {
         return baseApi.get<AnimeResponse>(API_ENDPOINTS.ANIME.LATEST);
     },
 
+    getEpisodeById: async (id: string): Promise<Anime> => {
+        return baseApi.get<Anime>(`${API_ENDPOINTS.ANIME.EPISODE}/${id}`);
+    },
+
     getEp2d: async (): Promise<AnimeResponse> => {
         return baseApi.get<AnimeResponse>(API_ENDPOINTS.ANIME.EP2D);
     },
