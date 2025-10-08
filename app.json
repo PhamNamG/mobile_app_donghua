@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Movie App",
+    "name": "Ổ 3D",
     "slug": "movie-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "movieapp",
+    "scheme": "o3d",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
@@ -59,21 +59,15 @@
       "expo-secure-store"
     ],
     "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+      "typedRoutes": true
     },
     "extra": {
       "apiUrl": "https://hh3d.id.vn/api",
       "router": {},
       "eas": {
-        "projectId": "6ebb690d-37fe-4531-836c-77736fa926a9"
+        "projectId": "92c809f1-c496-4e8e-a5f2-61449a3d6268"
       }
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/6ebb690d-37fe-4531-836c-77736fa926a9"
-    }
+    "owner": "nampg"
   }
 }
