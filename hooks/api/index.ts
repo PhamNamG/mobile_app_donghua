@@ -3,5 +3,6 @@
  */
 
 export * from './use-movies';
+export * from './use-poster';
 // export * from './use-series';
 

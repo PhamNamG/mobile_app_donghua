@@ -17,10 +17,11 @@ export interface Anime {
     sumSeri: string;
     products: AnimeProduct[];
     type: string;
-    week: string;
+    week: string | { _id: string; name: string }[];
     up: number;
     year: string;
     time: string;
+    newMovie: boolean;
     isActive: number;
     rating: any[];
     ratingCount: number;
@@ -35,8 +36,14 @@ export interface Anime {
     createdAt: string;
     updatedAt: string;
     latestProductUploadDate: string;
-    tags:{
-        name:string,
+    country?: string;
+    vs?: string;
+    thuyetMinh?: boolean;
+    status?: string;
+    tags: {
+        _id?: string;
+        name: string;
+        slug?: string;
     }[]
 }
 

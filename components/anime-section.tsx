@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, View, Pressable } from 'react-native';
+import { StyleSheet, View, Pressable, Dimensions } from 'react-native';
 import { router } from 'expo-router';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -7,6 +7,12 @@ import { Anime } from '@/lib/api/services/movies';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors } from '@/constants/theme';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const PADDING_HORIZONTAL = 16;
+const GAP = 12;
+const COLUMNS = 2; // 2 cột trên 1 hàng
+const CARD_WIDTH = (SCREEN_WIDTH - PADDING_HORIZONTAL * 2 - GAP) / COLUMNS;
 
 interface AnimeSectionProps {
   title: string;
@@ -19,7 +25,7 @@ export function AnimeSection({ title, animes, onSeeAllPress }: AnimeSectionProps
 
   const handleAnimePress = (anime: Anime) => {
     router.push({
-      pathname: '/series/[id]',
+      pathname: '/phim/[id]',
       params: { id: anime.slug },
     });
   };
@@ -27,7 +33,6 @@ export function AnimeSection({ title, animes, onSeeAllPress }: AnimeSectionProps
   if (!animes || animes.length === 0) {
     return null;
   }
-
   return (
     <ThemedView style={styles.container}>
       <View style={styles.header}>
@@ -37,29 +42,25 @@ export function AnimeSection({ title, animes, onSeeAllPress }: AnimeSectionProps
         {onSeeAllPress && (
           <Pressable onPress={onSeeAllPress} style={styles.seeAllButton}>
             <ThemedText style={styles.seeAllText}>Xem tất cả</ThemedText>
-            <IconSymbol 
-              name="chevron.right" 
-              size={16} 
-              color={colorScheme === 'dark' ? Colors.dark.tint : Colors.light.tint} 
+            <IconSymbol
+              name="chevron.right"
+              size={16}
+              color={colorScheme === 'dark' ? Colors.dark.tint : Colors.light.tint}
             />
           </Pressable>
         )}
       </View>
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
-      >
+      <View style={styles.scrollContent}>
         {animes.map((anime) => (
           <AnimeCard
             key={anime._id}
             anime={anime}
             onPress={() => handleAnimePress(anime)}
-            width={150}
+            width={CARD_WIDTH}
           />
         ))}
-      </ScrollView>
+      </View>
     </ThemedView>
   );
 }
@@ -89,7 +90,11 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   },
   scrollContent: {
-    paddingHorizontal: 16,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: GAP,
+    justifyContent: 'space-between',
   },
 });
 

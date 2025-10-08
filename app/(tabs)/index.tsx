@@ -3,36 +3,21 @@ import { router } from 'expo-router';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
 import { FeaturedBanner } from '@/components/featured-banner';
-import { CategorySection } from '@/components/category-section';
 import { AnimeSection } from '@/components/anime-section';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { categories, series } from '@/data/series';
+import { series } from '@/data/series';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors } from '@/constants/theme';
 import { useAnime } from '@/hooks/api';
+import { usePoster } from '@/hooks/api/use-poster';
 
 export default function HomeScreen() {
   const { data: animeData, isLoading, isError } = useAnime();
+  const { data: posterData, isLoading: isPosterLoading, isError: isPosterError } = usePoster();
   const colorScheme = useColorScheme();
   const featuredSeries = series.find((s) => s.isFeatured) || series[0];
   // Convert series to Movie format for FeaturedBanner compatibility
-  const featuredMovie = featuredSeries ? {
-    id: featuredSeries.id,
-    title: featuredSeries.title,
-    titleChinese: featuredSeries.titleChinese,
-    poster: featuredSeries.poster,
-    backdrop: featuredSeries.backdrop,
-    rating: featuredSeries.rating,
-    year: featuredSeries.year,
-    duration: 0, // Not used for series
-    genre: featuredSeries.genre,
-    description: featuredSeries.description,
-    director: featuredSeries.director,
-    studio: featuredSeries.studio,
-    isFeatured: featuredSeries.isFeatured,
-    isNew: featuredSeries.isNew,
-    isHot: featuredSeries.isHot,
-  } : null;
+
 
   const handleFeaturedPress = () => {
     if (featuredSeries) {
@@ -49,7 +34,6 @@ export default function HomeScreen() {
       params: { id: categoryId, title: categoryTitle },
     });
   };
-
   return (
     <ThemedView style={styles.container}>
       <StatusBar 
@@ -82,10 +66,10 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
       >
         {/* Featured Banner */}
-        {featuredMovie && (
+        {posterData?.data && posterData?.data.data.length > 0 && (
           <FeaturedBanner 
-            movie={featuredMovie} 
-            onPress={handleFeaturedPress}
+            posters={posterData?.data.data } 
+            onPosterPress={handleFeaturedPress}
           />
         )}
 

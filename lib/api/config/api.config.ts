@@ -13,9 +13,6 @@ const api: AxiosInstance = axios.create({
   headers: DEFAULT_HEADERS,
 });
 
-// Debug log - remove in production
-console.log('🌐 API_BASE_URL:', API_BASE_URL, 'TIMEOUT:', TIMEOUT.DEFAULT);
-
 /**
  * Request Interceptor
  * Adds authentication token to requests

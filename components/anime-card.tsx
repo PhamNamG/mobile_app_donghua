@@ -35,7 +35,7 @@ export function AnimeCard({ anime, onPress, width = 150 }: AnimeCardProps) {
           transition={300}
           placeholder={{ blurhash: 'L6PZfSi_.AyE_3t7t7R**0o#DgR4' }}
         />
-        {anime.newMovie && (
+        {anime.newMovie === true && (
           <View style={styles.badge}>
             <ThemedText style={styles.badgeText}>NEW</ThemedText>
           </View>
@@ -82,7 +82,7 @@ export function AnimeCard({ anime, onPress, width = 150 }: AnimeCardProps) {
 
 const styles = StyleSheet.create({
   container: {
-    marginRight: 12,
+    marginBottom: 0,
   },
   posterContainer: {
     position: 'relative',
